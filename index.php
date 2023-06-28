@@ -10,6 +10,12 @@ abstract class Index
                 require_once "./controladores/CtrlMarca.php";
                 $c = new CtrlMarca();
                 break;
+                
+            case 'CtrlProducto':
+                require_once "./controladores/CtrlProducto.php";
+                $c = new CtrlProducto();
+                break;
+
             case 'CtrlEmpresa':
                 require_once "./controladores/CtrlEmpresa.php";
                 $c = new CtrlEmpresa();

@@ -8,7 +8,7 @@ class MySQL implements ManejadorBDInterface
     private $_conexion;
 
     public function __construct() {
-        $this->_host="localhost:3306";
+        $this->_host="localhost";
         $this->_user="root";
         $this->_pass="";
         $this->_database="bdventas2023";

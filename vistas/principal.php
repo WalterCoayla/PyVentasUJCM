@@ -9,6 +9,9 @@
     <h1>Opciones del sistema</h1>
     <ul>
         <li>
+            <a href="?ctrl=CtrlProducto">Productos</a>
+        </li>
+        <li>
             <a href="?ctrl=CtrlMarca">Marcas</a>
         </li>
         <li>

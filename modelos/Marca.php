@@ -33,4 +33,7 @@ class Marca extends Modelo
         
         return $this->update($wh, $datos);
     }
+    public function getId(){
+        return $this->_id;
+    }
 }

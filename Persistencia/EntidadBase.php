@@ -16,16 +16,27 @@ class EntidadBase
         $this->_sql = new SQL($this->_tabla);
     }
 
+    public function setTabla($tabla){
+        $this->_tabla = (string) $tabla;
+        /* echo $this->_tabla; 
+        echo $this->_sql;
+        exit(); */
+    }
+
     public function getAll(){
+        # echo $this->_sql; exit;
+        $this->_sql->setTabla($this->_tabla);
         return $this->_bd->ejecutar($this->_sql);  
     }
      
     public function getById($id){
+        $this->_sql->setTabla($this->_tabla);
         $this->_sql->addWhere("`id`=$id");
         return $this->_bd->ejecutar($this->_sql);
     }
      
     public function getBy($columna,$valor){
+        $this->_sql->setTabla($this->_tabla);
         $this->_sql->addWhere("`$columna`='$valor'");
         return $this->_bd->ejecutar($this->_sql);
     }
@@ -39,6 +50,7 @@ class EntidadBase
     public function deleteBy($columna,$valor){
         $this->_sql->addWhere("`$columna`='$valor'");
         $this->_sql->setComando("DELETE");
+       // echo $this->_sql; exit;
         return $this->_bd->ejecutar($this->_sql);
     }
     public function update($wh, $datos){
