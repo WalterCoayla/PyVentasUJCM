@@ -22,7 +22,7 @@ class Producto extends Modelo
         $this->_stock = $stock;
         $this->_imagen = $imagen;
         $this->_marca = $marca;
-        # $this->_tabla= ($this->_nombre==null)?$this->_vista:$this->_tabla;
+
         parent::__construct($this->_tabla);
 
     }

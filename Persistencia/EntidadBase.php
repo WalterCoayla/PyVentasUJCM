@@ -18,13 +18,9 @@ class EntidadBase
 
     public function setTabla($tabla){
         $this->_tabla = (string) $tabla;
-        /* echo $this->_tabla; 
-        echo $this->_sql;
-        exit(); */
     }
 
     public function getAll(){
-        # echo $this->_sql; exit;
         $this->_sql->setTabla($this->_tabla);
         return $this->_bd->ejecutar($this->_sql);  
     }
@@ -50,14 +46,12 @@ class EntidadBase
     public function deleteBy($columna,$valor){
         $this->_sql->addWhere("`$columna`='$valor'");
         $this->_sql->setComando("DELETE");
-       // echo $this->_sql; exit;
         return $this->_bd->ejecutar($this->_sql);
     }
     public function update($wh, $datos){
         $this->_sql->addWhere($wh);
         $this->_sql->setDatos($datos);
         $this->_sql->setComando("UPDATE");
-        # echo $this->_sql;exit;
         return $this->_bd->ejecutar($this->_sql);
     }
     public function insert($datos){

@@ -24,9 +24,13 @@
     $titulo= ($editar==1)?'Editar Producto':'Nuevo Producto';
     ?>
     <h1><?=$titulo?></h1>
-
     <form action="?ctrl=CtrlProducto&accion=guardar" method="post">
-        Id: <input class="form-control" 
+    
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm">
+      Id: <input class="form-control" 
         type="text" name="id" value="<?=$id?>">
         <br>
         Nombre: <input class="form-control" 
@@ -35,28 +39,67 @@
         Descripcion: <input class="form-control" 
         type="text" name="descripcion" value="<?=$descripcion?>">
         <br>
-        
-        P.U.: <input class="form-control" 
-        type="text" name="pu" value="<?=$precio_unitario?>">
-        <br>
 
-        Stock: <input class="form-control" 
+    </div>
+    <div class="col-sm">
+    <div class="row">
+        <div class="col-sm">
+            P.U.: <input class="form-control" 
+            type="text" name="pu" value="<?=$precio_unitario?>">
+            <br>
+        </div>
+        <div class="col-sm">
+            Stock: <input class="form-control" 
         type="text" name="stock" value="<?=$stock?>">
         <br>
+        </div>
+    </div>
 
-        Imagen: <input class="form-control" 
+      Imagen: <input class="form-control" 
         type="text" name="imagen" value="<?=$imagen?>">
         <br>
-        idMarca: <input class="form-control" 
-        type="text" name="idmarcas" value="<?=$idmarcas?>">
-        <br>
+        Marca: 
+        <select class="form-control"  name="idmarcas" id="">
+            <?php 
+            $seleccionado='';
+            foreach ($marcas as $m) { 
+                if ($m['idmarcas']==$idmarcas)
+                    $seleccionado='selected';
+                else
+                    $seleccionado='';
+                ?>
+            <option <?=$seleccionado?> value="<?=$m['idmarcas']?>"><?=$m['nombre']?></option>
+            <?php
+            }
+            ?>
+            
+        </select>
+    </div>
 
+  </div>
+</div>
+
+<div class="row">
+    <div class="col">
+    </div>
+    <div class="col">
+    </div>
+    <div class="col text-center" >
         <input type="hidden" name="op" value="<?=$editar?>">
 
-        <input type="submit" value="Guardar">
+            <input class="form-control btn btn-success" type="submit" value="Guardar">
+    </div>
+    <div class="col"></div>
+
+    <div class="col"></div>
+</div>
+
+
+        
+
     </form>
 
-    <a href="?ctrl=CtrlMarca">Retornar</a>
+    <a href="?ctrl=CtrlProducto">Retornar</a>
     
 </body>
 </html>

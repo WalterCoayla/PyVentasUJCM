@@ -10,6 +10,29 @@
 
 </head>
 <body>
+  
+<?php
+    if ($msg['titulo']!=''){ ?>
+      <div class="toast-container top-0 end-0 p-3">
+
+    <!-- Then put toasts within -->
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="..." class="rounded me-2" alt="...">
+        <strong class="me-auto">Bootstrap</strong>
+        <small class="text-body-secondary">just now</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        See? Just like this.
+      </div>
+    </div>
+    </div>
+
+<?php
+    }
+?>
+
     <h1>Productos</h1>
 <a href="?ctrl=CtrlProducto&accion=nuevo"> Nuevo Producto</a>
     <table class="table table-striped table-hover">

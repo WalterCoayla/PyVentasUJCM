@@ -1,6 +1,8 @@
 <?php
 require_once "./core/Controlador.php";
 require_once "./modelos/Producto.php";
+require_once "./modelos/Marca.php";
+
 class CtrlProducto extends Controlador
 {
     public function index(){
@@ -31,9 +33,10 @@ class CtrlProducto extends Controlador
 
         $obj = new Producto($id);
         $obj = $obj->getBy('idproductos',$id);
-
+        $marcas = $this->getMarcas();
         $datos = array(
-            'datos'=>$obj['data'][0]
+            'datos'=>$obj['data'][0],
+            'marcas'=>$marcas['data']
         );
         $this->mostrar('productos/formNuevo.php',$datos);
     }
@@ -58,8 +61,17 @@ class CtrlProducto extends Controlador
         $this->select();
     }
 
+    private function getMarcas(){
+        $m = new Marca();
+        return $m->getAll();
+    }
     public function nuevo(){
-        $this->mostrar('productos/formNuevo.php');
+        
+        $marcas = $this->getMarcas();
+        $datos = array(
+            'marcas'=>$marcas['data']
+        );
+        $this->mostrar('productos/formNuevo.php',$datos);
     }
 
     public function eliminar(){
@@ -73,8 +85,12 @@ class CtrlProducto extends Controlador
     public function select(){
         $obj = new Producto();
         $objs= $obj->getAll();
+
+        // var_dump($objs);exit;
+
         $datos = array(
-            'datos'=>$objs['data']
+            'datos'=>$objs['data'],
+            'msg'=>$objs['msg']
         );
 
         $this->mostrar('productos/mostrar.php',$datos);
