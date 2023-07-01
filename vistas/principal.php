@@ -6,7 +6,11 @@
     <title>Sistema</title>
 </head>
 <body>
-    <h1>Opciones del sistema</h1>
+<?php 
+    $usuario = isset($_SESSION['usuario'])?$_SESSION['usuario']:'';
+?>
+    <h1>Opciones del sistema </h1>
+    <h2><?=$usuario?></h2>
     <ul>
         <li>
             <a href="?ctrl=CtrlProducto">Productos</a>
