@@ -3,24 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema</title>
+    <title>Sistema de Ventas</title>
+    <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="./assets/css/fontawesome-free/css/all.min.css">
+   <!-- Theme style -->
+  <link rel="stylesheet" href="./assets/css/adminlte.min.css">
+
 </head>
-<body>
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<div class="wrapper">
+
 <?php 
-    $usuario = isset($_SESSION['usuario'])?$_SESSION['usuario']:'';
+    require_once './vistas/plantilla/nav.php';
+    require_once './vistas/plantilla/aside.php';
 ?>
-    <h1>Opciones del sistema </h1>
-    <h2><?=$usuario?></h2>
-    <ul>
-        <li>
-            <a href="?ctrl=CtrlProducto">Productos</a>
-        </li>
-        <li>
-            <a href="?ctrl=CtrlMarca">Marcas</a>
-        </li>
-        <li>
-            <a href="?ctrl=CtrlEmpresa">Empresas</a>
-        </li>
-    </ul>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <?php 
+                    require_once './vistas/plantilla/migas.php';
+                ?>
+            </div>
+        </div>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+      <?=$contenido;?>
+
+      </div>
+    </section>
+
+    </div>
+
+    <?php 
+        require_once './vistas/plantilla/footer.php';
+    ?>
+
+</div>
+
+
+
+
 </body>
 </html>

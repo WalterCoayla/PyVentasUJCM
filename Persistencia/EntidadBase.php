@@ -8,7 +8,7 @@ class EntidadBase
     private $_colWhere;
     private $_colOrderBy;
 
-    public $_sql;
+    protected $_sql;    # Para que pueda ser usado por las clases hijas
  
     public function __construct($tabla) {
         $this->_tabla=(string) $tabla;

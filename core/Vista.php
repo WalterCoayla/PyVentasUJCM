@@ -14,7 +14,7 @@ abstract class Vista {
             foreach ($datos as $key => $value) 
                 $$key = $value;
                 
-        require_once $archivoVista;
+        # require_once $archivoVista;
 
         if ($comoContenido) { //Si devolvemos el contenido a una variable
             ob_start();  // activamos el BUFFER de salida

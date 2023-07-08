@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "./core/Controlador.php";
 require_once "./modelos/Marca.php";
 class CtrlMarca extends Controlador
@@ -32,10 +33,14 @@ class CtrlMarca extends Controlador
         $m = new Marca($id);
         $marca = $m->getBy('idmarcas',$id);
 
-        $datos = array(
+        $data = array(
             'datos'=>$marca['data'][0]
         );
-        $this->mostrar('marcas/formNuevo.php',$datos);
+
+        $datos = array(
+            'contenido'=>$this->mostrar('marcas/formNuevo.php',$data,true)
+        );
+        $this->mostrar('principal.php',$datos);
     }
 
     public function guardar(){
@@ -54,7 +59,10 @@ class CtrlMarca extends Controlador
     }
 
     public function nuevo(){
-        $this->mostrar('marcas/formNuevo.php');
+        $datos = array(
+            'contenido'=>$this->mostrar('marcas/formNuevo.php','',true)
+        );
+        $this->mostrar('principal.php',$datos);
     }
 
     public function eliminar(){
@@ -68,10 +76,14 @@ class CtrlMarca extends Controlador
     public function select(){
         $m = new Marca('marcas');
         $marcas= $m->getAll();
-        $datos = array(
+        $data = array(
             'datos'=>$marcas['data']
         );
 
-        $this->mostrar('marcas/mostrar.php',$datos);
+        $datos = array(
+            'contenido'=>$this->mostrar('marcas/mostrar.php',$data,true),
+            'migas'=>array('Marcas','Home')
+        );
+        $this->mostrar('principal.php',$datos);
     }
 }

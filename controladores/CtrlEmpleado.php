@@ -13,6 +13,9 @@ class CtrlEmpleado extends Controlador
             case 'login':
                 $this->login();
                 break;
+            case 'logout':
+                $this->logout();
+                break;
             case 'validar':
                 $this->validar();
                 break;
@@ -36,7 +39,11 @@ class CtrlEmpleado extends Controlador
         
     }
     public function login(){
-        $this->mostrar('empleados/login.php');
+        $datos = array(
+           'contenido'=> $this->mostrar('empleados/login.php','',true)
+        );
+        $this->mostrar('principal.php',$datos);
+
     }
     public function validar(){
         $obj = new Empleado();
@@ -49,13 +56,22 @@ class CtrlEmpleado extends Controlador
 
         if ($data['data']!=null){
             $_SESSION['usuario'] = $data['data'][0]['nombres'] . ' '.$data['data'][0]['apellidos'];
+            $_SESSION['menu'] = $this->getMenu();
             // echo $SESSION['usuario']; exit;     
-            header('Location: ?');
+            header('Location: ?ctrl=CtrlPrincipal');
         } else {
             echo "Usuario o Clave incorrecta";
             $this->login();
         }
 
+    }
+    public function logout(){
+        session_unset();
+        session_destroy();
+
+        $this->login();
+
+        exit;
     }
     public function editar(){
     /*     $id = $_GET['id'];
@@ -123,5 +139,14 @@ class CtrlEmpleado extends Controlador
         );
 
         $this->mostrar('productos/mostrar.php',$datos); */
+    }
+
+    private function getMenu(){
+        return array(
+            'CtrlEmpresa'=>'Empresas',
+            'CtrlMarca'=>'Marcas',
+            'CtrlProducto'=>'Productos'
+
+        );
     }
 }
