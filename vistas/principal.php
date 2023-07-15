@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="./assets/css/fontawesome-free/css/all.min.css">
    <!-- Theme style -->
   <link rel="stylesheet" href="./assets/css/adminlte.min.css">
+  <!-- jQuery -->
+    <script src="./assets/js/jquery/jquery.min.js"></script>
 
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -48,7 +50,8 @@
 
 </div>
 
-
+<script src="./assets/js/jsPdf/jspdf.debug.js"></script>
+<script src="./assets/js/jsPdf/jspdf.plugin.autotable3.1.1.min.js"></script>
 
 
 </body>
